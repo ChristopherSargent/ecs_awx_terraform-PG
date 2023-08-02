@@ -1,0 +1,15 @@
+# ignore ssh key
+alpha_key_pair.pem
+
+# ignore .terraform
+.terraform*
+
+# ignore terraform
+terraform*
+
+# ignore awx.out
+awx.out
+
+# ignore variables.tf
+variables.tf
+
