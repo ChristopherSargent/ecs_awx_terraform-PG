@@ -1,6 +1,5 @@
 ![alt text](ecs.logo.JPG)
-
-* This repository contains instructions on how to deploy an rhel8 AWX ec2 instance from ami and includes ec2, alb, alb-sg, ec2-sg, certificate and target group via terraform follwed by the instructions to deploy AWX on the ec2 deployed from terraform. For additional details, please email at [c.sargent-ctr@ecstech.com](mailto:c.sargent-ctr@ecstech.com). 
+* This repository contains detailed instructions for deploying a RHEL 8 AWX EC2 instance using Terraform. The deployment includes creating EC2 instances, Application Load Balancer (ALB), Security Groups (SG) for EC2 and ALB, managing certificates, and setting up a target group. Once the infrastructure is in place, the guide will walk you through the process of deploying AWX on the EC2 instance deployed via Terraform. For any additional details or inquiries, please contact us at c.sargent-ctr@ecstech.com.
 # [AWX Project Page](https://github.com/ansible/awx)
 * Note AWX is the opensourced Ansible Automation Platform 
 # [Ansible Automation Plaform](https://www.redhat.com/en/technologies/management/ansible)
