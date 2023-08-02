@@ -71,9 +71,9 @@ awx-pg-terraform-ec2 and awx-pg-terraform-alb
 3. cd /home/christopher.sargent/awx_terraform_pg
 4. terraform destroy
 
-# Section 2
+# Section 2.1
 * Install EPEL, docker, docker-compose on EC2 deployed from terraform
-* Note docker and docker-compose was installed on the AMI
+* Note docker and docker-compose were installed on the AMI already via the steps below
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/sysadmin && ssh -i alpha_key_pair.pem ec2-user@awx-pg-terraform-ec2PrivateIP
@@ -92,7 +92,8 @@ Docker version 24.0.5, build ced0996
 Docker Compose version v2.3.3
 ```
 14. systemctl enable docker.service && systemctl start docker.service
-# Clone AWX 21.11.1 on awx-pg-terraform-ec2, configure project, build images and deploy AWX containers
+# Section 2.2
+* Clone AWX 21.11.1 on awx-pg-terraform-ec2, configure project, build images and deploy AWX containers
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/sysadmin && ssh -i alpha_key_pair.pem ec2-user@awx-pg-terraform-ec2PrivateIP
