@@ -5,7 +5,7 @@
 
 * This repository contains the necessary source code files to deploy a rhel8 AWX ec2 instance from ami and includes ec2, alb, alb-sg, ec2-sg, certificate and target group from terraform. Next it contains the instructions to deploy AWX on the ec2 deployed from terraform. For additional details, please email at [c.sargent-ctr@ecstech.com](mailto:c.sargent-ctr@ecstech.com). 
 
-# Deploy This Project from Git
+# Clone project and terraform deploy 
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. cd /home/christopher.sargent/ && git clone https://bitbucket.cdmdashboard.com/projects/DBOPS/repos/awx_terraform_pg.git
 3. cd awx_terraform_pg/ && vim providers.tf
@@ -49,7 +49,7 @@ variable "ssh_private_key" {
 10. https://console.amazonaws-us-gov.com > Load Balancers > search for awx-pg-terraform-alb and get DNS name
 11. https://DNSnamefromstep10 > Login to AWX
 
-# Update Names
+# Update resources names if needed
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/ecs_threatq_terraform_ps
@@ -64,13 +64,13 @@ versus
 
 awx-pg-terraform-ec2 and awx-pg-terraform-alb
 ```
-# Destroy if needed
+# Terraform destroy if needed
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/awx_terraform_pg
 4. terraform destroy
 
-# Install EPEL, docker, docker-compose 
+# Install EPEL, docker, docker-compose on EC2 deployed from terraform
 * Note docker and docker-compose was installed on the AMI
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
@@ -90,7 +90,7 @@ Docker version 24.0.5, build ced0996
 Docker Compose version v2.3.3
 ```
 14. systemctl enable docker.service && systemctl start docker.service
-# Deploy AWX 21.11.1 on awx-pg-terraform-ec2
+# Clone AWX 21.11.1 on awx-pg-terraform-ec2, configure project, build images and deploy AWX containers
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/sysadmin && ssh -i alpha_key_pair.pem ec2-user@awx-pg-terraform-ec2PrivateIP
