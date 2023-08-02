@@ -1,11 +1,12 @@
 ![alt text](ecs.logo.JPG)
 
-# [awx_terraform_pg](https://bitbucket.cdmdashboard.com/projects/DBOPS/repos/awx_terraform_pg/browse)
-# [awx](https://github.com/ansible/awx)
+* This repository contains instructions on how to deploy an rhel8 AWX ec2 instance from ami and includes ec2, alb, alb-sg, ec2-sg, certificate and target group via terraform follwed by the instructions to deploy AWX on the ec2 deployed from terraform. For additional details, please email at [c.sargent-ctr@ecstech.com](mailto:c.sargent-ctr@ecstech.com). 
+# [AWX Project Page](https://github.com/ansible/awx)
+* Note AWX is the opensourced Ansible Automation Platform 
+# [Ansible Automation Plaform](https://www.redhat.com/en/technologies/management/ansible)
 
-* This repository contains the necessary source code files to deploy a rhel8 AWX ec2 instance from ami and includes ec2, alb, alb-sg, ec2-sg, certificate and target group from terraform. Next it contains the instructions to deploy AWX on the ec2 deployed from terraform. For additional details, please email at [c.sargent-ctr@ecstech.com](mailto:c.sargent-ctr@ecstech.com). 
-
-# Clone project and terraform deploy 
+# Section 1.1
+* Clone project and terraform deploy 
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. cd /home/christopher.sargent/ && git clone https://bitbucket.cdmdashboard.com/projects/DBOPS/repos/awx_terraform_pg.git
 3. cd awx_terraform_pg/ && vim providers.tf
@@ -48,8 +49,8 @@ variable "ssh_private_key" {
 9. https://console.amazonaws-us-gov.com > EC2 > search for awx-pg-terraform-ec2 and verify instance is up
 10. https://console.amazonaws-us-gov.com > Load Balancers > search for awx-pg-terraform-alb and get DNS name
 11. https://DNSnamefromstep10 > Login to AWX
-
-# Update resources names if needed
+# Section 1.2
+* Update resources names if needed
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/ecs_threatq_terraform_ps
@@ -64,13 +65,15 @@ versus
 
 awx-pg-terraform-ec2 and awx-pg-terraform-alb
 ```
-# Terraform destroy if needed
+# Section 1.3
+* Terraform destroy if needed
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/awx_terraform_pg
 4. terraform destroy
 
-# Install EPEL, docker, docker-compose on EC2 deployed from terraform
+# Section 2
+* Install EPEL, docker, docker-compose on EC2 deployed from terraform
 * Note docker and docker-compose was installed on the AMI
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
@@ -565,7 +568,7 @@ volumes:
  ⠿ Container tools_postgres_1  Started                                                                                                                                                                  0.8s
  ⠿ Container tools_awx_1       Started
 ```
-19. https://DNSnamefromstep10 under Deploy This Project from Git section > Login to AWX 
+19. https://DNSnamefromstep10 under Section 1.1 > Login to AWX 
 
 
 
