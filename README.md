@@ -51,7 +51,6 @@ variable "ssh_private_key" {
 
 ![Screenshot](resources/awx-pg-terraform-alb.JPG)
 
-11. https://DNSnamefromstep10 > Login to AWX
 # Update resources names if needed
 * Note. This is only needed if deploying additional resources.
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
