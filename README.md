@@ -1,16 +1,15 @@
 ![alt text](ecs.logo.JPG)
 * This repository contains detailed instructions for deploying a RHEL 8 AWX EC2 instance using Terraform. The deployment includes creating EC2 instances, Application Load Balancer (ALB), Security Groups (SG) for EC2 and ALB, managing certificates, and setting up a target group. Once the infrastructure is in place, the guide will walk you through the process of deploying AWX on the EC2 instance deployed via Terraform. For any additional details or inquiries, please contact us at c.sargent-ctr@ecstech.com.
 # [AWX Project Page](https://github.com/ansible/awx)
-* Note AWX is the opensourced Ansible Automation Platform 
+* Note AWX is the opensourced Ansible Automation Platform
 # [Ansible Automation Plaform](https://www.redhat.com/en/technologies/management/ansible)
 
-# Section 1.1
-* Clone project and terraform deploy 
+# Clone project and terraform deploy
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. cd /home/christopher.sargent/ && git clone https://bitbucket.cdmdashboard.com/projects/DBOPS/repos/awx_terraform_pg.git
 3. cd awx_terraform_pg/ && vim providers.tf
 ```
-# Playground 
+# Playground
 provider "aws" {
   region = var.selected_region
   access_key = var.aws_access_key
@@ -48,8 +47,8 @@ variable "ssh_private_key" {
 9. https://console.amazonaws-us-gov.com > EC2 > search for awx-pg-terraform-ec2 and verify instance is up
 10. https://console.amazonaws-us-gov.com > Load Balancers > search for awx-pg-terraform-alb and get DNS name
 11. https://DNSnamefromstep10 > Login to AWX
-# Section 1.2
-* Update resources names if needed
+# Update resources names if needed
+* Note. This is only needed if deploying additional resources.
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/ecs_threatq_terraform_ps
@@ -64,21 +63,21 @@ versus
 
 awx-pg-terraform-ec2 and awx-pg-terraform-alb
 ```
-# Section 1.3
-* Terraform destroy if needed
+# Terraform destroy if needed
+* Note. This is only if AWX is no longer needed.
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/christopher.sargent/awx_terraform_pg
 4. terraform destroy
 
-# Section 2.1
+# AWX Prerequisites
 * Install EPEL, docker, docker-compose on EC2 deployed from terraform
 * Note docker and docker-compose were installed on the AMI already via the steps below
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/sysadmin && ssh -i alpha_key_pair.pem ec2-user@awx-pg-terraform-ec2PrivateIP
-4. sudo -i 
-5. dnf upgrade -y && dnf install yum-utils -y && reboot 
+4. sudo -i
+5. dnf upgrade -y && dnf install yum-utils -y && reboot
 6. steps 1 - 4 under Deploy AWX 21.11.1 on awx-pg-terraform-ec2
 7. dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y && dnf update && dnf install htop -y
 8. cp /etc/profile /etc/profile.ORIG && echo "export PROMPT_COMMAND='echo -n \[\$(date +%F-%T)\]\ '" >> /etc/profile && echo "export HISTTIMEFORMAT='%F-%T '" >> /etc/profile && source /etc/profile
@@ -92,17 +91,17 @@ Docker version 24.0.5, build ced0996
 Docker Compose version v2.3.3
 ```
 14. systemctl enable docker.service && systemctl start docker.service
-# Section 2.2
-* Clone AWX 21.11.1 on awx-pg-terraform-ec2, configure project, build images and deploy AWX containers
+# Git Clone AWX
+* Git clone AWX 21.11.1 on awx-pg-terraform-ec2, configure project, build images and deploy AWX containers
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
 2. sudo -i
 3. cd /home/sysadmin && ssh -i alpha_key_pair.pem ec2-user@awx-pg-terraform-ec2PrivateIP
-4. sudo -i 
+4. sudo -i
 6. cd /home && git clone -b 21.11.0 https://github.com/ansible/awx.git
 7. cd /home && mv awx awx21 && cd /home/awx21/tools/docker-compose
-8. vim inventory 
+8. vim inventory
 ```
-# Uncomment and update pg_password, broadcast_websocket_secret, secret_key and awx_image 
+# Uncomment and update pg_password, broadcast_websocket_secret, secret_key and awx_image
 localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3"
 
 [all:vars]
@@ -461,7 +460,7 @@ alias awx-start='cd /home/awx21/tools/docker-compose/_sources && docker-compose 
 alias awx-stop='cd /home/awx21/tools/docker-compose/_sources && docker-compose down'
 alias awx='cd /var/lib/awx/projects/'
 ```
-17. source /root/.bashrc 
+17. source /root/.bashrc
 18. awx-stop
 ```
 [+] Running 4/4
@@ -568,7 +567,5 @@ volumes:
  ⠿ Container tools_postgres_1  Started                                                                                                                                                                  0.8s
  ⠿ Container tools_awx_1       Started
 ```
-19. https://DNSnamefromstep10 under Section 1.1 > Login to AWX 
-
-
-
+19. https://awx-pg-terraform-alb-1606754339.us-gov-west-1.elb.amazonaws.com > Login to AWX
+![Screenshot](resources/awxlogin.JPG)
