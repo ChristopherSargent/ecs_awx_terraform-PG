@@ -57,6 +57,7 @@
 ![Screenshot](resources/inv5.JPG)
 
 7. Resources > Inventories > playground_inventory > Hosts > Verify hosts are populated
+
 ![Screenshot](resources/inv6.JPG)
 
 #
