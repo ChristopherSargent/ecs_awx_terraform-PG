@@ -47,6 +47,7 @@ variable "ssh_private_key" {
 9. https://console.amazonaws-us-gov.com > EC2 > search for awx-pg-terraform-ec2 and verify instance is up
 
 ![Screenshot](resources/awx-pg-terraform-ec2.JPG)
+
 10. https://console.amazonaws-us-gov.com > Load Balancers > search for awx-pg-terraform-alb and get DNS name
 
 ![Screenshot](resources/awx-pg-terraform-alb.JPG)
