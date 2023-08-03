@@ -45,8 +45,17 @@ variable "ssh_private_key" {
 7. terraform init && terraform plan --out awx.out
 8. terraform apply "awx.out"
 9. https://console.amazonaws-us-gov.com > EC2 > search for awx-pg-terraform-ec2 and verify instance is up
+
+![Screenshot](resources/awx-pg-terraform-ec2.JPG)
+
 10. https://console.amazonaws-us-gov.com > Load Balancers > search for awx-pg-terraform-alb and get DNS name
-11. https://DNSnamefromstep10 > Login to AWX
+
+![Screenshot](resources/awx-pg-terraform-alb.JPG)
+
+11. https://awx-pg-terraform-alb-1606754339.us-gov-west-1.elb.amazonaws.com > Login to AWX
+
+![Screenshot](resources/awxlogin.JPG)
+
 # Update resources names if needed
 * Note. This is only needed if deploying additional resources.
 1. ssh -i alpha_key_pair.pem ec2-user@PG-TerraformPublicIP
