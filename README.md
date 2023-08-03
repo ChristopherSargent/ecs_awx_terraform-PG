@@ -273,4 +273,4 @@ volumes:
 
 ![Screenshot](resources/awxlogin.JPG)
 
-# See AWX configuration details under awx_config/README.md
+* See AWX configuration details under awx_config/README.md
