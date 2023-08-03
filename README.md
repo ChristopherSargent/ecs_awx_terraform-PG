@@ -144,7 +144,7 @@ quay.io/centos/centos       stream9   7a8f9253940e   3 days ago      155MB
 
 14. docker exec tools_awx_1 make clean-ui ui-devel
 15. docker exec -ti tools_awx_1 awx-manage createsuperuser
-* Note to store these creds in secrets manager root password
+* Note. Stored these in secrets manager as pg-awx
 ```
 Username (leave blank to use 'root'):
 Email address: christ.sargent-CTR@ecstech.com
