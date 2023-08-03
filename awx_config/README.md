@@ -272,5 +272,3 @@ volumes:
 21. https://awx-pg-terraform-alb-1606754339.us-gov-west-1.elb.amazonaws.com > Login to AWX
 
 ![Screenshot](resources/awxlogin.JPG)
-
-# See AWX configuration details under awx_config/README.md
