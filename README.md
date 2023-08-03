@@ -568,4 +568,5 @@ volumes:
  ⠿ Container tools_awx_1       Started
 ```
 19. https://awx-pg-terraform-alb-1606754339.us-gov-west-1.elb.amazonaws.com > Login to AWX
+
 ![Screenshot](resources/awxlogin.JPG)
